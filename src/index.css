@@ -2,27 +2,29 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* border: orangered solid 1px; */
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #ececec;
-  min-height: 100vh;
-  padding: 20px;
+  height: 99vh;
+  padding: 10px;
 }
 
 .container {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 20px;
-  height: 95vh;
+  height: 100%;
 }
 
 .main-layout {
   display: flex;
   gap: 20px;
   margin-top: 10px;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 80px);
 }
 
 .left-panel {
@@ -44,18 +46,17 @@ body {
 .header {
   text-align: center;
   color: rgb(0, 0, 0);
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 
 .header h1 {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 .upload-section {
   background: white;
   border-radius: 12px;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -169,7 +170,7 @@ img {
 .result-section {
   background: white;
   border-radius: 12px;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   flex: 1;
   display: flex;
@@ -181,9 +182,9 @@ img {
 #documentContent {
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 20px;
+  padding: 50px;
   background: white;
-  line-height: 1.8;
+  line-height: 1.2;
   font-size: 1rem;
   overflow-y: auto;
   flex: 1;
@@ -248,9 +249,9 @@ img {
 
 .highlight {
   background-color: #ffeb3b;
-  padding: 2px 4px;
+  padding: 0;
   border-radius: 3px;
-  font-weight: 500;
+  /* font-weight: 500; */
 }
 
 .loading {
@@ -300,10 +301,11 @@ img {
   border-radius: 8px;
   border: 1px solid #ddd;
   width: 100%;
-  height: 46vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .breakdown-header {
