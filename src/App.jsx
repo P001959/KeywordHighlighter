@@ -7,6 +7,11 @@ import DocumentViewer from './components/DocumentViewer';
 import { highlightKeywords } from './utils/highlighter';
 import docIcon from './assets/google-docs.png';
 import sheetIcon from './assets/google-sheets.png';
+import {
+  loadGoogleDocAsText,
+  loadGoogleSheetAsKeywords
+} from './utils/googleLoader';
+
 
 function App() {
   const [docContent, setDocContent] = useState('');
@@ -17,6 +22,8 @@ function App() {
   const [excelFileName, setExcelFileName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [googleDocsLink, setGoogleDocsLink] = useState('');
+  const [googleSheetsLink, setGoogleSheetsLink] = useState('');
 
   const processDocFile = async (file) => {
     try {
@@ -27,6 +34,48 @@ function App() {
       setError('');
     } catch (err) {
       setError('Error reading document file: ' + err.message);
+    }
+  };
+
+  const handleGoogleDocsLoad = async () => {
+    if (!googleDocsLink.trim()) return;
+
+    setLoading(true);
+    setError('');
+
+    try {
+      if (!googleDocsLink.includes('docs.google.com/document')) {
+        throw new Error('Please enter a valid Google Docs link');
+      }
+      
+      const text = await loadGoogleDocAsText(googleDocsLink);
+      setDocContent(text);
+      setDocFileName('Google Doc');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSheetsLoad = async () => {
+    if (!googleSheetsLink.trim()) return;
+
+    setLoading(true);
+    setError('');
+
+    try {
+      if (!googleSheetsLink.includes('docs.google.com/spreadsheets')) {
+        throw new Error('Please enter a valid Google Sheets link');
+      }
+      
+      const keywords = await loadGoogleSheetAsKeywords(googleSheetsLink);
+      setKeywords(keywords);
+      setExcelFileName('Google Sheet');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -111,6 +160,23 @@ function App() {
               icon={docIcon}
             />
 
+            <div className="google-link-box">
+              <input
+                type="text"
+                placeholder="Paste Google Docs link"
+                value={googleDocsLink}
+                onChange={(e) => setGoogleDocsLink(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleGoogleDocsLoad()}
+              />
+              <button
+                className="button"
+                onClick={handleGoogleDocsLoad}
+                disabled={!googleDocsLink || loading}
+              >
+                Load Doc
+              </button>
+            </div>
+
             <UploadBox
               id="excelUpload"
               title="Upload Keywords Excel"
@@ -120,6 +186,23 @@ function App() {
               onFileSelect={handleExcelUpload}
               icon={sheetIcon}
             />
+
+            <div className="google-link-box">
+              <input
+                type="text"
+                placeholder="Paste Google Sheets link"
+                value={googleSheetsLink}
+                onChange={(e) => setGoogleSheetsLink(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleGoogleSheetsLoad()}
+              />
+              <button
+                className="button"
+                onClick={handleGoogleSheetsLoad}
+                disabled={!googleSheetsLink || loading}
+              >
+                Load Sheet
+              </button>
+            </div>
 
             <button className="button" onClick={handleProcess} disabled={!canProcess}>
               Highlight Keywords

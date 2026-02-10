@@ -19,6 +19,7 @@ function UploadBox({
   const isValidFile = useCallback(
     (file) => {
       if (!accept) return true;
+
       const acceptedExtensions = accept
         .split(',')
         .map(ext => ext.trim().toLowerCase());
@@ -87,7 +88,11 @@ function UploadBox({
         style={{ display: 'none' }}
       />
 
-      {fileName && <div className="file-name">✓ {fileName}</div>}
+      {fileName && (
+        <div className="file-name">
+          ✓ {fileName}
+        </div>
+      )}
     </div>
   );
 }

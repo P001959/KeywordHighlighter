@@ -332,3 +332,22 @@ body {
 .breakdown-row.no-match .breakdown-keyword {
   color: #999;
 }
+
+.google-link-box {
+  margin-top: 1px;
+  display: flex;
+  gap: 8px;
+}
+
+.google-link-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.google-link-box button {
+  padding: 10px 14px;
+}
+
+
