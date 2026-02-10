@@ -65,8 +65,7 @@ body {
 .upload-box {
   border: 2px dashed #AFD0BF;
   border-radius: 8px;
-  padding: 10px;
-  text-align: center;
+  padding: 15px;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -85,19 +84,32 @@ body {
   display: none;
 }
 
+.upload-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
 .upload-label {
   cursor: pointer;
   display: block;
 }
 
 .upload-icon {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-text {
+  flex: 1;
 }
 
 img {
-  width: 30px;
-  height: 30px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 
@@ -110,15 +122,22 @@ img {
 .upload-box p {
   color: #666;
   font-size: 0.8rem;
+  margin: 0;
+}
+
+.file-name-inline {
+  color: #2e7d32;
+  font-weight: 500;
 }
 
 .file-name {
-  margin-top: 5px;
-  padding: 5px;
+  margin-top: 10px;
+  padding: 8px;
   background: #e8f5e9;
   border-radius: 6px;
   color: #2e7d32;
   font-weight: 500;
+  text-align: center;
 }
 
 .button {
@@ -303,9 +322,11 @@ img {
 .breakdown-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 12px 15px;
   border-bottom: 1px solid #f0f0f0;
   transition: background 0.2s;
+  gap: 10px;
 }
 
 .breakdown-row:hover {
@@ -314,6 +335,13 @@ img {
 
 .breakdown-row:last-child {
   border-bottom: none;
+}
+
+.breakdown-number {
+  color: #666;
+  font-weight: 500;
+  min-width: 30px;
+  flex-shrink: 0;
 }
 
 .breakdown-keyword {
@@ -330,6 +358,7 @@ img {
   font-weight: 600;
   min-width: 40px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .breakdown-row.no-match .breakdown-count {
@@ -338,6 +367,10 @@ img {
 
 .breakdown-row.no-match .breakdown-keyword {
   color: #999;
+}
+
+.breakdown-row.no-match .breakdown-number {
+  color: #ccc;
 }
 
 /* Google Link Row Styling */
@@ -412,4 +445,3 @@ img {
   opacity: 0.5;
   cursor: not-allowed;
 }
-

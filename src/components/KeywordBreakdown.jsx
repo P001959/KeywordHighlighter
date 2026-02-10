@@ -7,11 +7,12 @@ function KeywordBreakdown({ keywordCounts }) {
     <div className="breakdown-table">
       <div className="breakdown-header">Keywords</div>
       <div className="breakdown-content">
-        {sortedEntries.map(([keyword, count]) => (
+        {sortedEntries.map(([keyword, count], index) => (
           <div
             key={keyword}
             className={`breakdown-row ${count === 0 ? 'no-match' : ''}`}
           >
+            <div className="breakdown-number">{index + 1}.</div>
             <div className="breakdown-keyword">{escapeHtml(keyword)}</div>
             <div className="breakdown-count">{count}</div>
           </div>

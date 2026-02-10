@@ -69,16 +69,26 @@ function UploadBox({
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      <div className="upload-icon">
-        {icon ? (
-          <img src={icon} alt="" width={48} height={48} />
-        ) : (
-          '📄'
-        )}
-      </div>
+      <div className="upload-content">
+        <div className="upload-icon">
+          {icon ? (
+            <img src={icon} alt="" width={48} height={48} />
+          ) : (
+            '📄'
+          )}
+        </div>
 
-      <h3>{title}</h3>
-      <p>{description}</p>
+        <div className="upload-text">
+          <h3>{title}</h3>
+          <p>
+            {fileName ? (
+              <span className="file-name-inline">✓ {fileName}</span>
+            ) : (
+              description
+            )}
+          </p>
+        </div>
+      </div>
 
       <input
         ref={fileInputRef}
@@ -87,12 +97,6 @@ function UploadBox({
         onChange={handleFileChange}
         style={{ display: 'none' }}
       />
-
-      {fileName && (
-        <div className="file-name">
-          ✓ {fileName}
-        </div>
-      )}
     </div>
   );
 }
