@@ -160,16 +160,17 @@ function App() {
               icon={docIcon}
             />
 
-            <div className="google-link-box">
+            <div className="google-link-row">
               <input
                 type="text"
+                className="google-link-input"
                 placeholder="Paste Google Docs link"
                 value={googleDocsLink}
                 onChange={(e) => setGoogleDocsLink(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleGoogleDocsLoad()}
               />
               <button
-                className="button"
+                className="load-button"
                 onClick={handleGoogleDocsLoad}
                 disabled={!googleDocsLink || loading}
               >
@@ -187,16 +188,17 @@ function App() {
               icon={sheetIcon}
             />
 
-            <div className="google-link-box">
+            <div className="google-link-row">
               <input
                 type="text"
+                className="google-link-input"
                 placeholder="Paste Google Sheets link"
                 value={googleSheetsLink}
                 onChange={(e) => setGoogleSheetsLink(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleGoogleSheetsLoad()}
               />
               <button
-                className="button"
+                className="load-button"
                 onClick={handleGoogleSheetsLoad}
                 disabled={!googleSheetsLink || loading}
               >

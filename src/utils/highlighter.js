@@ -14,7 +14,13 @@ export function highlightKeywords(docContent, keywords) {
 
   let keywordCounts = {};
 
-  const sortedKeywords = [...keywords].sort((a, b) => b.length - a.length);
+  // Filter out "keyword" and "keywords" (case-insensitive)
+  const filteredKeywords = keywords.filter((keyword) => {
+    const lowerKeyword = keyword.toLowerCase().trim();
+    return lowerKeyword !== 'keyword' && lowerKeyword !== 'keywords';
+  });
+
+  const sortedKeywords = [...filteredKeywords].sort((a, b) => b.length - a.length);
 
   sortedKeywords.forEach((keyword) => {
     keywordCounts[keyword] = 0;
