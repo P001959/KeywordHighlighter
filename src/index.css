@@ -316,6 +316,45 @@ img {
   font-size: 1rem;
 }
 
+.breakdown-header {
+  /* Override: make header a flex row so label + button sit side by side */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.breakdown-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+  line-height: 1;
+}
+
+.breakdown-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.breakdown-copy-btn.copied {
+  background: #555555;
+  border-color: #6f796f;
+}
+
+.breakdown-copy-btn svg {
+  flex-shrink: 0;
+}
+
 .breakdown-content {
   overflow-y: auto;
   flex: 1;
